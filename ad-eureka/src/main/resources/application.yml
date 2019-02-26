@@ -1,18 +1,18 @@
-#spring:
-#  application:
-#    name: ad-eureka
-#
-#server:
-#  port: 8000
-#
-#eureka:
-#  instance:
-#    hostname: localhost
-#  client:
-#    fetch-registry: false
-#    register-with-eureka: false
-#    service-url:
-#      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
+spring:
+  application:
+    name: ad-eureka
+
+server:
+  port: 8000
+
+eureka:
+  instance:
+    hostname: localhost
+  client:
+    fetch-registry: false
+    register-with-eureka: false
+    service-url:
+      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
 
 ---
 spring:
@@ -29,7 +29,7 @@ eureka:
     prefer-ip-address: false
   client:
     service-url:
-      defaultZone: http://server2:8001/eureka/, http://server3:8002/eureka/
+      defaultZone: http://server2:8001/eureka/,http://server3:8002/eureka/
 
 ---
 spring:
@@ -46,13 +46,13 @@ eureka:
     prefer-ip-address: false
   client:
     service-url:
-      defaultZone: http://server1:8000/eureka/, http://server3:8002/eureka/
+      defaultZone: http://server1:8000/eureka/,http://server3:8002/eureka/
 
 ---
 spring:
   application:
     name: ad-eureka
-  profiles: server2
+  profiles: server3
 
 server:
   port: 8002
@@ -63,4 +63,4 @@ eureka:
     prefer-ip-address: false
   client:
     service-url:
-      defaultZone: http://server1:8000/eureka/, http://server2:8001/eureka/
+      defaultZone: http://server1:8000/eureka/,http://server2:8001/eureka/
